@@ -27,7 +27,7 @@ fn main() {
             'R' => {
                 let first_zero_at = if pointer == 0 { RANGE } else { RANGE - pointer };
                 zero_count += passes_of_zero(first_zero_at, number);
-                pointer = (pointer + (number)).rem_euclid(RANGE);
+                pointer = (pointer + number) % RANGE;
             }
             _ => panic!("Invalid direction: {}", direction as char),
         }

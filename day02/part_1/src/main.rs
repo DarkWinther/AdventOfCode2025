@@ -17,8 +17,8 @@ fn is_repeated_twice(n: usize) -> bool {
     let half = len / 2;
     let pow10 = 10usize.pow(half as u32);
 
-    let left = n / pow10;   // first half of digits
-    let right = n % pow10;  // second half of digits
+    let left = n / pow10; // first half of digits
+    let right = n % pow10; // second half of digits
 
     left == right
 }

@@ -1,14 +1,26 @@
 use rayon::prelude::*;
 
-fn is_repeated_twice(mut n: usize) -> bool {
-    let mut digits = Vec::new();
-    while n > 0 {
-        digits.push(n % 10);
-        n /= 10;
+fn is_repeated_twice(n: usize) -> bool {
+    // Handle 0 explicitly
+    if n == 0 {
+        return false;
     }
-    digits.reverse();
-    let len = digits.len();
-    len % 2 == 0 && digits[..len / 2] == digits[len / 2..]
+
+    // Count digits
+    let len = n.checked_ilog10().unwrap_or(0) + 1;
+
+    // Must be even length
+    if len % 2 != 0 {
+        return false;
+    }
+
+    let half = len / 2;
+    let pow10 = 10usize.pow(half as u32);
+
+    let left = n / pow10;   // first half of digits
+    let right = n % pow10;  // second half of digits
+
+    left == right
 }
 
 fn main() {

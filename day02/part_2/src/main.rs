@@ -1,6 +1,7 @@
 use rayon::prelude::*;
 
 fn is_repeating_block(n: usize) -> bool {
+    // Count digits
     let len = n.checked_ilog10().unwrap_or(0) + 1;
 
     // Try block sizes

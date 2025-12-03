@@ -1,4 +1,4 @@
-fn largest_lexiconographic_numeral(line: &str, k: usize) -> u64 {
+fn largest_lexicographic_numeral(line: &str, k: usize) -> u64 {
     let digits: Vec<char> = line.chars().collect();
     let mut stack: Vec<char> = Vec::with_capacity(k);
     let line_len = digits.len();
@@ -28,7 +28,7 @@ fn main() {
     let sum = input
         .lines()
         .map(|line| {
-            let best = largest_lexiconographic_numeral(line, 12);
+            let best = largest_lexicographic_numeral(line, 12);
             // println!("Best for line '{}': {}", line, best);
             best
         })

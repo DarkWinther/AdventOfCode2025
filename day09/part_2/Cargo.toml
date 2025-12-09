@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 geo = "0.32.0"
+rayon = "1.11.0"

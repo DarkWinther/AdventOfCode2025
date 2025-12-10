@@ -2,8 +2,9 @@ use std::collections::{HashSet, VecDeque};
 
 use regex::Regex;
 
-fn min_presses(n: usize, buttons: &[Vec<usize>], target: &[bool]) -> Option<usize> {
-    let start = vec![false; n];
+// Breadth first search (BFS)
+fn min_presses(buttons: &[Vec<usize>], target: &[bool]) -> Option<usize> {
+    let start = vec![false; target.len()];
     let mut visited = HashSet::new();
     let mut queue = VecDeque::new();
 
@@ -11,7 +12,7 @@ fn min_presses(n: usize, buttons: &[Vec<usize>], target: &[bool]) -> Option<usiz
     queue.push_back((start, 0));
 
     while let Some((state, steps)) = queue.pop_front() {
-        if &state == target {
+        if state == target {
             return Some(steps);
         }
 
@@ -73,7 +74,7 @@ fn main() {
 
     let sum_of_min_presses = machines
         .map(|(indicators, buttons, _)| {
-            min_presses(indicators.len(), &buttons, &indicators).unwrap()
+            min_presses(&buttons, &indicators).unwrap()
         })
         .sum::<usize>();
 
